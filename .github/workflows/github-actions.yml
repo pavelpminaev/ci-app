@@ -3,10 +3,6 @@ name: githab-actions
 on:
   - push
 
-runs:
-  using: 'node16'
-  main: 'main.js'
-
 jobs:
   build:
     runs-on: ubuntu-latest
