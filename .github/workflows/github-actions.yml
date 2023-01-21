@@ -1,0 +1,21 @@
+name: githab-actions
+
+on:
+  - push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Клонируем репозиторий
+      - uses: actions/checkout@v2
+      # Устанавливаем Node.js
+      - uses: actions/setup-node@v1
+      # Ставим зависимости
+      - run: npm install
+      # Запускаем линтер
+      - run: npm run lint
+      # Запускаем тесты
+      - name: run tests
+        run: npm test # name и run относятся к одной задаче, поэтому дефис ставится только перед name
