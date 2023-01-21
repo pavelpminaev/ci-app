@@ -8,11 +8,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Клонируем репозиторий
       - uses: actions/checkout@v2
-      # Устанавливаем Node.js
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: e2b03042-33da-45da-8108-0470f0b01f7a
+        continue-on-error: true
       - uses: actions/setup-node@v3
-      # Ставим зависимости
+        with:
+          node-version: 16
+          cache: 'npm'
       - run: make setup
       # Запускаем линтер
       - run: make lint
