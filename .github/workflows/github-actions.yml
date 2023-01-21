@@ -3,6 +3,10 @@ name: githab-actions
 on:
   - push
 
+runs:
+  using: 'node16'
+  main: 'main.js'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,7 +15,7 @@ jobs:
       # Клонируем репозиторий
       - uses: actions/checkout@v2
       # Устанавливаем Node.js
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
       # Ставим зависимости
       - run: npm install
       # Запускаем линтер
